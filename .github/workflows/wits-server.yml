@@ -38,4 +38,4 @@ jobs:
 
     - name: Build solution
       run: |
-        msbuild src\PDS.WITSMLstudio.sln -t:rebuild -restore -verbosity:diag -property:Configuration=Release  
+        msbuild src\PDS.WITSMLstudio.sln -t:rebuild -restore -property:Configuration=Release 
