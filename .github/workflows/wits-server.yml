@@ -43,4 +43,11 @@ jobs:
 
     - name: Build solution
       run: |
-        msbuild src\PDS.WITSMLstudio.sln -t:rebuild -restore -property:Configuration=Release 
+        msbuild src\PDS.WITSMLstudio.sln -t:rebuild -restore -property:Configuration=Release
+
+    - name: Publish web server
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_APP_WITS_SERVER_DEV_NAME }}
+        publish-profile: ${{ secrets.AZURE_APP_WITS_SERVER_DEV_PUBLISH_PROFILE }}
+        package: src\store
