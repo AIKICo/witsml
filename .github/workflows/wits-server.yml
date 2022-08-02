@@ -41,6 +41,12 @@ jobs:
 
     - run: nuget restore src\PDS.WITSMLstudio.sln
 
+    - name: Find and Replace Mongo Connection String
+      run: find *.config -type f -exec sed -i ''s/#{mongoConnectionString}#/${{ secrets.AZURE_APP_DB_CONN_STRING_DEV }}/g'' {} \;
+
+    - name: Find and Replace Mongo Database Name
+      run: find *.config -type f -exec sed -i ''s/#{DatbaseName}#/${{ secrets.AZURE_APP_DB_NAME_DEV }}/g'' {} \;
+
     - name: Build solution
       run: |
         msbuild src\PDS.WITSMLstudio.sln -t:rebuild -restore -property:Configuration=Release
