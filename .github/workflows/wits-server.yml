@@ -36,6 +36,11 @@ jobs:
     - name: Setup msbuild
       uses: microsoft/setup-msbuild@v1.1
 
+    - name: Setup nuget
+      uses: nuget/setup-nuget@v1
+
+    - run: nuget restore src\PDS.WITSMLstudio.sln
+
     - name: Build solution
       run: |
         msbuild src\PDS.WITSMLstudio.sln -t:rebuild -restore -property:Configuration=Release 
