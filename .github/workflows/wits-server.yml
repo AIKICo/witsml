@@ -47,6 +47,7 @@ jobs:
       env:
         mongoConnectionString: ${{ secrets.AZURE_APP_DB_CONN_STRING_DEV }}
         DatbaseName: ${{ secrets.AZURE_APP_DB_NAME_DEV }}
+        webServerAddress: ${{ secrets.AZURE_APP_ADDRESS_DEV }}
 
     - name: Build solution
       run: |
